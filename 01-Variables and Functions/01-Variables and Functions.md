@@ -1,4 +1,4 @@
-# 01-Basics
+# 01-Variables and functions
 
 ## Name Assignment (Variables & Constants)
 
