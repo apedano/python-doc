@@ -125,6 +125,38 @@ import math
 
 ```
 
+### Variable scope
+
+```python
+global_variable = 'I am available everywhere'
+
+>>> def some_function():
+...     print(global_variable)  # because is global
+...     local_variable = "only available within this function"
+...     print(local_variable)
+...
+>>> # the following code will throw error because
+>>> # 'local_variable' only exists inside 'some_function'
+>>> print(local_variable)
+Traceback (most recent call last):
+  File "<stdin>", line 10, in <module>
+NameError: name 'local_variable' is not defined
+```
+
+#### The `global` statement
+
+```python
+>>> def spam():
+...     global eggs
+...     eggs = 'spam'
+...
+>>> eggs = 'global'
+>>> spam()
+>>> print(eggs)
+# spam
+
+```
+
 ### Docstrings
 A comment after the first line of the function working as a doc
 
@@ -155,4 +187,25 @@ Raise a number to an arbitrary power.
     Takes number_one and raises it to the power of number_two, returning the result.
 
 ```
+## Lambda function
 
+````python
+>>> add = lambda x, y: x + y
+>>> add(5, 3)
+# 8
+````
+
+They can also be used with lexical closure
+
+```python
+>>> def make_adder(n):
+...     return lambda x: x + n
+...
+>>> plus_3 = make_adder(3)
+>>> plus_5 = make_adder(5)
+
+>>> plus_3(4)
+# 7
+>>> plus_5(4)
+# 9
+```

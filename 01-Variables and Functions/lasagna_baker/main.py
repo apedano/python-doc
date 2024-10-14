@@ -16,3 +16,13 @@ from lasagna import elapsed_time_in_minutes
 print(elapsed_time_in_minutes.__doc__)
 
 print(elapsed_time_in_minutes(3, 10))
+
+
+def spam():
+    global eggs
+    eggs = 'spam'
+
+eggs = 'global'
+spam()
+print(eggs)
+#spam
