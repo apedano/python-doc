@@ -123,6 +123,41 @@ The for loop iterates over a `list`, `tuple`, `dictionary`, `set` or string:
 ...     print(pet)
 ...
 ```
+
+### Loop through a list
+
+```python
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+
+>>> for item in furniture:
+...     print(item)
+```
+### Loop through a list with `enumerate`
+
+```python
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+
+>>> for index, item in enumerate(furniture):
+...     print(f'index: {index} - item: {item}')
+# index: 0 - item: table
+# index: 1 - item: chair
+# index: 2 - item: rack
+# index: 3 - item: shelf
+```
+### Loop through multiple lists with `zip`
+
+```python
+>>> furniture = ['table', 'chair', 'rack', 'shelf']
+>>> price = [100, 50, 80, 40]
+
+>>> for item, amount in zip(furniture, price):
+...     print(f'The {item} costs ${amount}')
+# The table costs $100
+# The chair costs $50
+# The rack costs $80
+# The shelf costs $40
+```
+
 ### The `range` function
 
 The `range()` function returns a sequence of numbers. 
