@@ -1,5 +1,21 @@
 # 01-Variables and functions
 
+<!-- TOC -->
+* [01-Variables and functions](#01-variables-and-functions)
+  * [Name Assignment (Variables & Constants)](#name-assignment-variables--constants)
+  * [Constants](#constants)
+  * [Functions](#functions)
+    * [Calling functions](#calling-functions)
+    * [Variable scope](#variable-scope)
+      * [The `global` statement](#the-global-statement)
+    * [Docstrings](#docstrings)
+  * [Lambda function](#lambda-function)
+  * [`args` and `kwargs` function arguments](#args-and-kwargs-function-arguments)
+    * [Understanding `*args`](#understanding-args)
+    * [Understanding `**kwargs`](#understanding-kwargs)
+    * [Combining `*args` and `**kwargs`](#combining-args-and-kwargs)
+<!-- TOC -->
+
 ## Name Assignment (Variables & Constants)
 
 A name can be reassigned (or **re-bound**) to different values (different object types) over its lifetime.
@@ -209,3 +225,60 @@ They can also be used with lexical closure
 >>> plus_5(4)
 # 9
 ```
+
+## `args` and `kwargs` function arguments
+
+n Python, `*args` and `**kwargs` are special syntax used to **pass a variable number of arguments to a function**. 
+They provide flexibility when you're **unsure about the number of arguments a function might receive**.
+
+`*args` must come before `**kwargs` in the function definition.
+
+You can use any variable name instead of `args` and `kwargs`, but `args` and `kwargs` are common conventions.
+
+### Understanding `*args`
+
+* **Arbitrary positional arguments**: `*args` allows you to pass an arbitrary number of positional arguments to a function.
+* **Packed into a tuple**: These arguments are packed into a tuple inside the function.
+
+```python
+def my_function(*args):
+    for arg in args:
+        print(arg)
+
+my_function(1, 2, 3, "hello")  # Output: 1 2 3 hello
+```
+
+### Understanding `**kwargs`
+
+* **Arbitrary keyword arguments**: `**kwargs` allows you to pass an arbitrary number of keyword arguments to a function.
+* **Packed into a dictionary**: These arguments are packed into a dictionary inside the function.
+
+```python
+def my_function(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+my_function(name="Alice", age=30, city="New York")  # Output: name: Alice age: 30 city: New York
+```
+
+### Combining `*args` and `**kwargs`
+
+You can use both `*args` and `**kwargs` in a single function definition:
+
+```python
+def my_function(*args, **kwargs):
+    print("Positional arguments:", args)
+    print("Keyword arguments:", kwargs)
+    print("Second argument:", args[1])
+    print("Name keyword value:", kwargs['name'])
+
+my_function(1, 2, name="Alice", age=30)
+# Positional arguments: (1, 2)
+# Keyword arguments: {'name': 'Alice', 'age': 30}
+#Second argument: 2
+#Name keyword value: Alice
+```
+> **WARNING**: The order matters! positional arguments must be all specified before the keyword arguments
+
+
+
