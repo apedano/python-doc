@@ -361,8 +361,8 @@ s3 = {3, 4, 6}
 | `discard`                  | Removes the element, not raising errors if not present         | `s.discard(3) s.discard(3)`                            |
 | `union` `\|`               | Creates a new set with all the elements from the sets provided | `s1.union(s2)  # or 's1 \| s2' # {1, 2, 3, 4, 5}`      |
 | `intersection` `&`         | Creates a new set with only the elements in both sets          | `s1.intersection(s2, s3)  # or 's1 & s2 & s3' # {3}`   |
-| `difference` `-`           | will return only the elements that are unique to the first set          | `s2.difference(s3)  # or 's2 - s3' # {5}`              |
-| `symmetric_difference` `^` | will return all the elements that are not common between them          | `s2.symmetric_difference(s3)  # or 's2 ^ s3' # {5, 6}` |
+| `difference` `-`           | will return only the elements that are unique to the first set | `s2.difference(s3)  # or 's2 - s3' # {5}`              |
+| `symmetric_difference` `^` | will return all the elements that are not common between them  | `s2.symmetric_difference(s3)  # or 's2 ^ s3' # {5, 6}` |
 
 ## Collections comprehension `[...]`
 

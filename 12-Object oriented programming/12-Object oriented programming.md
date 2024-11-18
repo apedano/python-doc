@@ -70,7 +70,7 @@ print(obj.__private_var)  # AttributeError: 'MyClass' object has no attribute '_
 
 **Inheritance** promotes code reuse and allows you to create a hierarchy of classes that share common attributes and methods. 
 
-### Superclass
+### BaseClass
 
 ```python
 # Define a class named Animal
@@ -86,3 +86,16 @@ class Animal:
         print("")
 ```
 
+#### Sublcass
+
+```python
+#Class has Animal as superclass
+class Dog(Animal):
+
+    # Override the speak method of the Animal class
+    def speak(self):
+        print("Woof!")
+
+
+fido = Dog('Fido')
+```
