@@ -19,6 +19,7 @@
     * [`@classmethod`](#classmethod)
     * [`@staticmethod`](#staticmethod)
     * [`@property`](#property)
+    * [`@dataclasses`](#dataclasses)
 <!-- TOC -->
 
 ## Encapsulation
@@ -319,6 +320,72 @@ Traceback (most recent call last):
     return self._price
 AttributeError: 'House' object has no attribute '_price'
 ```
+
+### `@dataclasses`
+
+`Dataclasses` are python classes, but are suited for storing data objects. 
+This module provides a decorator and functions for automatically adding generated special methods such as `__init__()` and `__repr__()` (as the `toString()` in Java) to user-defined classes.
+
+**It resables the @Data annotation in Lombok**
+
+A standard class declaration is 
+
+```python
+class Number:
+    def __init__(self, val):
+        self.val = val
+
+obj = Number(2)
+obj.val
+# 2
+```
+
+with the decorator it becomes
+
+```python
+@dataclass
+class Number:
+    val: int
+
+obj = Number(2)
+obj.val
+# 2
+```
+
+> It is **mandatory to specify the field type** but the `typing.Any` can be used
+
+```python
+from dataclasses import dataclass
+from typing import Any
+
+@dataclass
+class WithoutExplicitTypes:
+  name: Any
+  value: Any = 42
+```
+ 
+We can also define **default values** for the attributes
+
+```python
+@dataclass
+class Product:
+    name: str
+    count: int = 0
+    price: float = 0.0
+
+obj = Product("Python")
+obj.name
+# Python
+
+obj.count
+# 0
+
+obj.price
+# 0.0
+```
+
+
+
 
 
 
