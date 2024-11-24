@@ -1,5 +1,17 @@
-# 13A-Virtual environments
-https://realpython.com/python-virtual-environments-a-primer/
+# 13B-Virtual environments
+
+<!-- TOC -->
+* [13A-Virtual environments](#13b-virtual-environments)
+  * [Definition](#definition)
+  * [Create a virtual environment](#create-a-virtual-environment)
+  * [Activate](#activate)
+  * [Use the virtual env](#use-the-virtual-env)
+    * [The Python's Package Installer `pip` module](#the-pythons-package-installer-pip-module-)
+    * [Use the freeze output file to install all dependencies at ones](#use-the-freeze-output-file-to-install-all-dependencies-at-ones)
+    * [Separate installed libs in virtual environments](#separate-installed-libs-in-virtual-environments)
+  * [Deactivate](#deactivate-)
+  * [Delete](#delete)
+<!-- TOC -->
 
 ## Definition
 
@@ -21,8 +33,15 @@ https://realpython.com/python-virtual-environments-a-primer/
 
 ## Create a virtual environment
 
+To create a virtual env, the recommended way it to **use the `venv` module installed with the `py` command line tool**.
+
+The current path being set is not relevant the virtual env folder is created 
+
 ```python
 # creates a new virtual environment named `venv` using Python’s built-in `venv` module.
+
+# py -m venv <module_name>
+
 py -m venv venv\
 ```
 
@@ -46,7 +65,7 @@ with admin rights
 Set-ExecutionPolicy RemoteSigned
 ```
 
-Now we can activate the virtual env:
+Now we can activate the virtual env from the `Script` folder inside the generated env:
 
 ```python
 venv\Scripts\activate
@@ -55,6 +74,62 @@ venv\Scripts\activate
 ```
 
 ## Use the virtual env
+
+### The Python's Package Installer `pip` module 
+
+```shell
+python -m pip install django==5.1
+```
+
+or
+
+```shell
+pip install django==5.1
+```
+
+Uninstall package
+
+```shell
+pip uninstall <package_name[==version]>
+```
+
+Show installed libs
+
+One way is to use the pip list command
+
+```shell
+(client-new) PS> pip list
+Package  Version
+-------- -------
+asgiref  3.8.1
+Django   5.1
+pip      23.2.1
+sqlparse 0.5.2
+tzdata   2024.2
+```
+
+Alternatively, we can output the lib list to a file
+
+```shell
+(client-new) PS> pip freeze > requirements.txt
+(client-new) PS> cat requirements.txt
+asgiref==3.8.1
+Django==5.1
+sqlparse==0.5.2
+tzdata==2024.2
+```
+
+### Use the freeze output file to install all dependencies at ones
+
+The ouput of the freeze command can be used to install all specify dependencies on 
+a virtual environment.
+
+```shell
+pip install -r requirements.txt
+```
+
+
+### Separate installed libs in virtual environments
 
 We can now use the environment in isolation. For instance, we can install a certain dependency version:
 
@@ -85,10 +160,18 @@ tzdata   2024.1
 (client-new) PS> deactivate
 ```
 
+
 ## Deactivate 
+
+The command exits the current virtual env, connecting to the "base"
 
 ```shell
 (client-old) PS> deactivate
+
+PS>
 ```
 
-https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/
+## Delete
+
+Once deactivated, a virtual environment can be deleted by just deleting the 
+folder where it is stored.

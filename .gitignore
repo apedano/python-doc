@@ -1,1 +1,4 @@
 .venv/
+.idea
+/13-Modules and Code packaging/packaging_tutorial/venv/
+/13-Modules and Code packaging/packaging_tutorial/client-new/
