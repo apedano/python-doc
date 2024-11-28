@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "phone-number-validator"
+version = "0.1.0"
+description = ""
+authors = ["apedano <pedano.alessandro@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+
+[tool.poetry.scripts]
+usage_script = "phone_number_validator.usage_script:execute"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
