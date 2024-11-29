@@ -31,7 +31,7 @@ On Windows with Powershell
 
 ```Powershell
 (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
-```
+
 
 To get started you need Poetry's bin directory (C:\Users\pedan\AppData\Roaming\Python\Scripts) in your `PATH`
 environment variable.
@@ -40,7 +40,7 @@ You can choose and execute one of the following commands in PowerShell:
 
 A. Append the bin directory to your user environment variable `PATH`:
 
-```Powershell
+
 [Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\Users\pedan\AppData\Roaming\Python\Scripts", "User")
 ```
 
@@ -142,7 +142,7 @@ Python:   /path/to/main/python
 We can also list all the virtual envs **linked to the current project and de specfied version of Python**
 
 ```powershell
-poetry env list
+    poetry env list
 
 phone-number-validator-yOTOJzq3-py3.12 (Activated)
 ```
@@ -233,7 +233,42 @@ True
 True
 ```
 
-Continue with 
+## How to test the package
+
+### Add test dependencies as group
+
+It is possible to **separate the test dependencies from the production dependencies using groups**
+
+Group dependencies are listed in a separate table **in the toml file**.
+
+The sintax is
+
+```shell
+poetry add <dependency_name_1> [...<dependency_name_n>] - group <group_name>
+```
+
+So we can add test dependencies as such:
+
+```shell
+poetry add pytest requests-mock --group test
+```
+
+The `pyproject.toml` file will add the dependencies:
+
+```toml
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.2"
+requests-mock = "^1.10.0"
+```
+
+### Add the test code
+
+We can add the test code [test_validator.py](./phone-number-validator/tests/test_validator.py)
+
+...
+
+
+
 
 https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry#heading-how-to-test-the-package
 
