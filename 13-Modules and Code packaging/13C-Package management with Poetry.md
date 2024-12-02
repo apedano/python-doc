@@ -1,5 +1,25 @@
 # 13C-Package management with Poetry
 
+<!-- TOC -->
+* [13C-Package management with Poetry](#13c-package-management-with-poetry)
+  * [What is a Python package](#what-is-a-python-package)
+  * [What is Poetry](#what-is-poetry)
+  * [Install Poetry](#install-poetry)
+  * [Create new package](#create-new-package)
+    * [The `pyproject.toml` file](#the-pyprojecttoml-file)
+  * [Create a virtual env for the package development](#create-a-virtual-env-for-the-package-development)
+    * [Install dependencies](#install-dependencies)
+    * [The `poetry.lock` file](#the-poetrylock-file)
+  * [Add a script to the project](#add-a-script-to-the-project)
+  * [How to test the package](#how-to-test-the-package)
+    * [Add test dependencies as group](#add-test-dependencies-as-group)
+    * [Add the test code](#add-the-test-code)
+    * [Execute the test code](#execute-the-test-code)
+  * [Publish the package](#publish-the-package)
+    * [Build the package](#build-the-package)
+<!-- TOC -->
+
+
 ## What is a Python package
 
 > A Python package is a collection of Python modules that can be easily distributed and installed. 
@@ -265,12 +285,69 @@ requests-mock = "^1.10.0"
 
 We can add the test code [test_validator.py](./phone-number-validator/tests/test_validator.py)
 
-...
+### Execute the test code
 
+To run the tests, it is important to execute the `pytest` command inside the virtual environment. 
+**Poetry provides a run command to execute the given command inside the project’s virtual environment**. 
+So execute the following command to run the tests:
 
+```shell
+poetry run pytest -v
+```
 
+the outpput is
 
-https://www.freecodecamp.org/news/how-to-build-and-publish-python-packages-with-poetry#heading-how-to-test-the-package
+```shell
+================================================= test session starts =================================================
+platform win32 -- Python 3.13.0, pytest-8.3.3, pluggy-1.5.0 -- C:\Users\Alessandro\AppData\Local\pypoetry\Cache\virtualenvs\phone-number-validator-Z7UIZXmp-py3.13\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\projects\personal\python-doc\13-Modules and Code packaging\phone-number-validator
+configfile: pyproject.toml
+plugins: requests-mock-1.12.1
+collected 8 items
+
+tests/test_validator.py::test_valid_phone_number PASSED                                                          [ 12%]
+tests/test_validator.py::test_invalid_phone_number PASSED                                                        [ 25%]
+tests/test_validator.py::test_api_call_failure PASSED                                                            [ 37%]
+tests/test_validator.py::test_phone_number_without_country_code PASSED                                           [ 50%]
+tests/test_validator.py::test_phone_number_with_unsupported_country_code PASSED                                  [ 62%]
+tests/test_validator.py::test_invalid_api_key PASSED                                                             [ 75%]
+tests/test_validator.py::test_invalid_phone_number_type PASSED                                                   [ 87%]
+tests/test_validator.py::test_empty_phone_number PASSED                                                          [100%]
+
+================================================== 8 passed in 0.06s ==================================================
+```
+
+## Publish the package
+
+### Build the package
+
+```shell
+poetry build
+```
+the output
+
+```shell
+Building phone-number-validator (0.1.0)
+  - Building sdist
+  - Built phone_number_validator-0.1.0.tar.gz
+  - Building wheel
+  - Built phone_number_validator-0.1.0-py3-none-any.whl
+```
+
+Poetry uses the information specified in the `pyproject.toml` file such as project name, version, and dependencies to package the project in two different formats – sdist and wheel. 
+
+* The **wheel distributions** are pre-compiled packages that can be installed quickly
+* The **source distributions** `sdist` contain the raw source code and require compilation.
+
+To publish your library, you will need to [properly configure your PyPI credentials](https://python-poetry.org/docs/repositories/#configuring-credentials), as Poetry will publish the library to PyPI by default.
+
+Once the library is packaged, you can use the publish command to publish it.
+
+```shell
+poetry publish
+```
+After executing the poetry publish command, your package will be published on the Python Package Index (PyPI), which makes it available for installation through Poetry.
 
 
 
