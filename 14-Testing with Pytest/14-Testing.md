@@ -67,6 +67,18 @@ So that the project structure will look like
 
 add the first test file [test_format_file_size.py](pytest_demo%2Ftests%2Ftest_format_file_size.py)
 
+#### Naming conventions
+
+* Function based tests should must start with `test` (the underscore is not required)
+  * `def test_format_file_size_returns_GB_format():`
+* Class names should start with `Test`
+  * ```python
+      class TestFormatFileSize:
+        def test_format_file_size_returns_GB_format(self):
+        assert format_file_size(0) == "1.00 GB"
+    ```
+    
+
 ### Execute the test
 
 ```shell
@@ -104,6 +116,8 @@ tests\test_format_file_size.py:5: AssertionError
 FAILED tests/test_format_file_size.py::test_format_file_size_returns_GB_format
 ============================== 1 failed in 0.06s ==============================
 ```
+
+### Filtering tests
 
 
 
