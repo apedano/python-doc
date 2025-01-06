@@ -1,5 +1,24 @@
 # 14-Testing
 
+<!-- TOC -->
+* [14-Testing](#14-testing)
+  * [PyTest](#pytest)
+    * [Configuration](#configuration)
+    * [Add business logic code](#add-business-logic-code)
+    * [Install `pytest` as project dependency](#install-pytest-as-project-dependency)
+    * [Create the test directory](#create-the-test-directory)
+      * [Naming conventions](#naming-conventions)
+    * [Execute the test](#execute-the-test)
+    * [Filtering tests](#filtering-tests)
+    * [Parametrized tests `pytest.mark.parametrize`](#parametrized-tests-pytestmarkparametrize)
+      * [Use @dataclass as parameters](#use-dataclass-as-parameters)
+    * [Testing exception handling `pytest.rises`](#testing-exception-handling-pytestrises)
+      * [Error handling in parametrized tests](#error-handling-in-parametrized-tests)
+    * [Fixtures `@pytest.fixture()`](#fixtures-pytestfixture)
+    * [Example with SQLite3](#example-with-sqlite3)
+    * [Add plugins](#add-plugins)
+<!-- TOC -->
+
 ## PyTest
 
 https://betterstack.com/community/guides/testing/pytest-guide/
