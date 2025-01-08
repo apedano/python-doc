@@ -12,7 +12,7 @@ my_function(name="Alice", age=30, city="New York")  # Output: name: Alice
 
 def my_function(*args, **kwargs):
     print("Positional arguments:", args)
-    print("Keyword arguments:", kwargs)
+    print("Keyword arguments:", kwargs) #{'name': 'Alice', 'age': 30}
     print("Second argument:", args[1])
     print("Name keyword value:", kwargs['name'])
 

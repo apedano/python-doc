@@ -381,4 +381,3 @@ There are many other useful plugins for Pytest, including:
 * `pytest-docker`: Facilitates Docker-based integration testing.
 * `pytest-sugar`: Modifies the default Pytest interface to a more visually appealing one.
 * `pytest-xdist`: Enables parallel execution of tests.
-

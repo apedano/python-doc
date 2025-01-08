@@ -159,7 +159,7 @@ Platform: darwin
 OS:       posix
 Python:   /path/to/main/python
 ```
-We can also list all the virtual envs **linked to the current project and de specfied version of Python**
+We can also list all the virtual envs **linked to the current project and de specified version of Python**
 
 ```powershell
     poetry env list
