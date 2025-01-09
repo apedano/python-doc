@@ -383,6 +383,25 @@ obj.count
 obj.price
 # 0.0
 ```
+`field` definitions can also be used
+
+```python
+dataclasses.field(*, default=MISSING, default_factory=MISSING, init=True, repr=True, hash=None, compare=True, metadata=None, kw_only=MISSING)
+```
+More details [here](https://docs.python.org/3/library/dataclasses.html)
+
+```python
+@dataclass
+class C:
+    x: int
+    y: int = field(repr=False)
+    z: int = field(repr=False, default=10)
+    mylist: list[int] = field(default_factory=list)
+
+c = C()
+c.mylist += [1, 2, 3]
+
+```
 
 
 
