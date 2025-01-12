@@ -1,5 +1,5 @@
 import pytest
-from src.srp_wrong_classes import Employee, Actor
+from solid_demo.srp_wrong_classes import Employee, Actor
 
 @pytest.mark.parametrize(
     "actor_name, actor",

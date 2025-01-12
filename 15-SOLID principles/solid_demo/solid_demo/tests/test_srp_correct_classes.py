@@ -1,5 +1,5 @@
 import pytest
-from src.srp_correct_classes import Employee, Actor, Status, EmployeeFacade, ActorNotAllowedException
+from solid_demo.srp_correct_classes import Employee, Actor, Status, EmployeeFacade, ActorNotAllowedException
 
 @pytest.fixture
 def sample_employee():

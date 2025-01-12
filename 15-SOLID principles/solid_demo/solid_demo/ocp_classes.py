@@ -16,7 +16,6 @@ class Person:
     last_name: str
     address: Address
 
-
 class PersonSerializer(ABC):
     @abstractmethod
     def marshal(self, person:Person):
@@ -24,7 +23,7 @@ class PersonSerializer(ABC):
 
 class PersonJson(PersonSerializer):
     def marshal(self, person:Person):
-        return json.dumps(person)
+        return json.dumps(person, default=lambda o: o.__dict__, indent=1)
 
 class PersonXml(PersonSerializer):
     def marshal(self, person:Person):
