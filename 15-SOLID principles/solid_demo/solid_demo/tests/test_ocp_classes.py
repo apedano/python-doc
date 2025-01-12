@@ -27,7 +27,6 @@ def test_json_serialize(sample_person):
         diff = DeepDiff(expected, actual, ignore_order=True)
 
         assert not diff
-
     except json.JSONDecodeError:
         print("Invalid JSON format in one or both strings.")
         assert False
