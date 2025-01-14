@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import pytest
 
-from solid_demo.lsp_classes import TwoDimShape, Triangle, Rectangle
+from solid_demo.lsp_classes import TwoDimShape, TwoDimShape, Triangle, Rectangle, InvalidShape, InvalidShapeException
 
 @pytest.mark.parametrize(
     "two_dim_shape, expected_area",
@@ -14,5 +14,7 @@ from solid_demo.lsp_classes import TwoDimShape, Triangle, Rectangle
 def test_valid_subclass_substitutions(two_dim_shape: TwoDimShape, expected_area):
     assert two_dim_shape.calculate_area() == expected_area
 
-def test_invalid_subclass():
-    assert False
+def test_lsp_invalid_subclass():
+    shape: TwoDimShape = InvalidShape(1, 2)
+    with pytest.raises(InvalidShapeException, match=""):
+        shape.calculate_area()

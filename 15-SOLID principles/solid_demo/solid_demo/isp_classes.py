@@ -22,7 +22,7 @@ class WrongService1():
         self.__service = independent_service
 
     def do_operation(self):
-        self.__service.operation1("wrong service name")
+        return self.__service.operation1("wrong service name")
 
 
 class Operations1(ABC):
@@ -40,17 +40,24 @@ class Operations3(ABC):
     def operation3(self, service_name: string):
         pass
 
-class Service(Operations1, Operations2, Operations3):
+class Service(Operations1):
+
+    def __init__(self, service_name: string):
+        self.__service_name = service_name
 
     def operation1(self, service_name: string):
-        return "operation1 at {}".format(service_name)
+        return "operation1 at {}".format(self.__service_name)
 
     def operation2(self, service_name: string):
-        return "operation2 at {}".format(service_name)
+        return "operation2 at {}".format(self.__service_name)
 
     def operation3(self, service_name: string):
-        return "operation3 at {}".format(service_name)
+        return "operation3 at {}".format(self.__service_name)
 
 
+class Service1User(Operations1):
 
+
+    def operation1(self, service_name: string):
+        return "operation1 at {}".format(self.__service_name)
 
