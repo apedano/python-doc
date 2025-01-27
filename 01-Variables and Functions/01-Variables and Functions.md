@@ -123,6 +123,21 @@ None
 
 ```
 
+### Return hints
+
+Return hints are optional.
+They do not enforce type checking at runtime (unless you use a type-checking tool like mypy).
+They are primarily used for documentation and to improve the development experience.
+
+```python
+class UserAdapter:
+    def from_dto_to_entity(self, user_dto: UserDto) -> User:
+        pass
+
+    def from_entity_to_dto(self, user: User) -> UserDto:
+        pass
+```
+
 ### Calling functions
 
 ```python

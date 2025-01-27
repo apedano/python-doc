@@ -33,6 +33,11 @@ Create a new virtual env in the project
 poetry env use /full/path/to/python
 ```
 
+Example
+```python
+poetry env use C:\Users\pedan\AppData\Local\Programs\Python\Python313\python.exe
+```
+
 ### External virtual environment management
 
 Poetry will detect and respect an existing virtual environment that has been externally activated. 
