@@ -113,7 +113,11 @@ class Animal:
 ```python
 #Class has Animal as superclass
 class Dog(Animal):
-
+    
+    def.__init(self, name, owner_name):
+        super().__init__(self, name)
+        def.__owner_name = owner_name
+  
     # Override the speak method of the Animal class
     def speak(self):
         print("Woof!")
